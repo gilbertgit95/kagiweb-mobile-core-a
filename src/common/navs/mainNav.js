@@ -1,13 +1,19 @@
-import React from 'react';
-import { Appbar, Button, IconButton, Badge } from 'react-native-paper';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { Appbar, Avatar, IconButton } from 'react-native-paper';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import { useTheme } from 'react-native-paper'
 
-const MainNav = () => {
-    const theme = useTheme()
+import BadgeIconButton from '../buttons/badgeIconButtons';
+import AvatarButton from '../buttons/avatarButton';
+
+const MainNav = (props) => {
+    const theme = useTheme();
 
     return (
-        <Appbar.Header>
+        <Appbar.Header
+            style={
+                !props.hasColor? {backgroundColor: theme.colors.background}: {}
+            }>
             <View
                 style={{
                     ...styles.navBarActionGroup
@@ -23,29 +29,36 @@ const MainNav = () => {
                     ...styles.navBarActionGroup,
                     ...styles.navBarActionCenter
                 }}>
-                <IconButton
-                    icon="camera"
-                    size={20}
-                    onPress={() => console.log('Pressed')}/>
+                <AvatarButton
+                    onPress={() => console.log('Pressed')}>
+                    <Avatar.Image
+                        size={40}
+                        style={{backgroundColor: 'transparent'}}
+                        source={ require('../../../assets/kagiweb.png') } />
+                </AvatarButton>
             </View>
             <View
                 style={{
                     ...styles.navBarActionGroup,
                     ...styles.navBarActionRight
                 }}>
+                <AvatarButton
+                    style={{
+                        backgroundColor: theme.colors.text
+                    }}
+                    size={30}
+                    text={'GC'}
+                    onPress={() => console.log('Pressed')} />
+                <BadgeIconButton
+                    icon="bell"
+                    size={20}
+                    badgeValue={3}
+                    onPress={() => console.log('Pressed')}/>
                 <IconButton
                     icon="shield-account"
                     size={20}
                     onPress={() => console.log('Pressed')}/>
                 
-                <IconButton
-                    icon="bell"
-                    size={20}
-                    onPress={() => console.log('Pressed')}/>
-                <IconButton
-                    icon="camera"
-                    size={20}
-                    onPress={() => console.log('Pressed')}/>
             </View>
         </Appbar.Header>
     )
@@ -56,12 +69,12 @@ export default MainNav
 const styles = StyleSheet.create({
     navBarActionGroup: {
         flexDirection: 'row',
-        width: '33%'
+        flex: 1
     },
     navBarActionCenter: {
         alignItems: 'center'
     },
     navBarActionRight: {
-        alignItems: 'flex-end'
+        flexDirection: 'row-reverse',
     }
 });
