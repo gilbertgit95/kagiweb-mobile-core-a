@@ -30,7 +30,7 @@ import ResetPasswordScreen from './auth/resetPassword'
 const CombinedDefaultTheme = merge(PaperDefaultTheme, NavigationDefaultTheme);
 const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 
-const Stack = createNativeStackNavigator();
+const AuthStack = createNativeStackNavigator();
 
 const Screens = () => {
     // const route = useRoute()
@@ -43,33 +43,21 @@ const Screens = () => {
     return (
         <PaperProvider theme={theme}>
             <NavigationContainer theme={theme}>
-                <Stack.Navigator
-                    initialRouteName="AuthLogin"
-                    screenOptions={{
-                        header: (props) => {
-                            return (
-                                <MainNav hasColor={true} {...props} />
-                            )
-                        },
-                    }}>
+                <AuthStack.Navigator>
                     {/* auth screens */}
-                    <Stack.Screen
+                    <AuthStack.Screen
                         name="AuthLogin"
-                        component={LoginScreen} />
-                    <Stack.Screen
-                        name="AuthLogout"
-                        component={LogoutScreen} />
-                    <Stack.Screen
+                        component={LoginScreen}
+                        options={{title: 'Sign In'}} />
+                    <AuthStack.Screen
                         name="AuthForgotPassword"
-                        component={ForgotPasswordScreen} />
-                    <Stack.Screen
+                        component={ForgotPasswordScreen}
+                        options={{title: 'Forgot Password'}} />
+                    <AuthStack.Screen
                         name="AuthResetPassword"
-                        component={ResetPasswordScreen} />
-
-                    {/* core screens */}
-                    {/* core account screens */}
-                    {/* core admin screens */}
-                </Stack.Navigator>
+                        component={ResetPasswordScreen}
+                        options={{title: 'Reset Password'}} />
+                </AuthStack.Navigator>
             </NavigationContainer>
         </PaperProvider>
     )
