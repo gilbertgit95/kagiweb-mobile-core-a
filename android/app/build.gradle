@@ -230,6 +230,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('kagiweb-mobile-core-a.keystore')
+            storePassword 'kagiwebMobileCoreA'
+            keyAlias 'kagiwebMobileCoreA'
+            keyPassword 'kagiwebMobileCoreA'
+        }
     }
     buildTypes {
         debug {
