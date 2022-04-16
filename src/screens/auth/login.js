@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
-import AuthLayout from '../../common/layouts/authLayout';
+import AuthLayout from './components/authLayout';
 
 const LoginScreen = ({ navigation }) => {
     const [states, setStates] = useState({
@@ -14,10 +14,10 @@ const LoginScreen = ({ navigation }) => {
             <AuthLayout
                 footerContent={(
                     <>
-                        <Button onPress={ () => navigation.push('AuthForgotPassword') }>
+                        <Button onPress={ () => navigation.push('ForgotPassword') }>
                             Forgot Password
                         </Button>
-                        <Button onPress={ () => navigation.push('AuthResetPassword') }>
+                        <Button onPress={ () => navigation.push('ResetPassword') }>
                             Reset Password
                         </Button>
                     </>
@@ -44,7 +44,7 @@ const LoginScreen = ({ navigation }) => {
                     style={styles.buttonStyle}
                     mode='contained'
                     onPress={ () => console.log('signing in') }>
-                    Submit
+                    Sign In
                 </Button>
             </AuthLayout>
         </View>

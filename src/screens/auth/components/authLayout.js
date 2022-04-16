@@ -11,7 +11,7 @@ const AuthLayout = (props) => {
             <View style={styles.logo}>
                 <Image
                     style={styles.logoImage}
-                    source={ require('../../../assets/kagiweb.png') } />
+                    source={ require('../../../../assets/kagiweb.png') } />
             </View>
             {
                 // the main contens
@@ -37,7 +37,8 @@ export default AuthLayout
 
 const styles = StyleSheet.create({
     logo: {
-      alignItems: 'center'
+        marginTop: 30,
+        alignItems: 'center'
     },
     logoImage: {
         width: 150,
