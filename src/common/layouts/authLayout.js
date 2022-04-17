@@ -11,7 +11,7 @@ const AuthLayout = (props) => {
             <View style={styles.logo}>
                 <Image
                     style={styles.logoImage}
-                    source={ require('../../../../assets/kagiweb.png') } />
+                    source={ require('../../../assets/kagiweb.png') } />
             </View>
             {
                 // the main contens

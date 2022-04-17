@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Appbar } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput, Caption } from 'react-native-paper';
-import AuthLayout from './components/authLayout';
+import AuthLayout from '../../common/layouts/authLayout';
 
 const ForgotPasswordScreen = ({ navigation }) => {
     const [states, setStates] = useState({

@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 import AuthContext from '../../common/contexts/authContext';
-import AuthLayout from './components/authLayout';
+import AuthLayout from '../../common/layouts/authLayout';
 
 const LoginScreen = ({ navigation }) => {
     const [states, setStates] = useState({

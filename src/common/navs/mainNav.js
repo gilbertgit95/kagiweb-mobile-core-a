@@ -22,7 +22,7 @@ const MainNav = (props) => {
                     icon="menu"
                     color={theme.colors.text}
                     size={20}
-                    onPress={() => console.log('Pressed')}/>
+                    onPress={() => props.navigation.toggleDrawer()}/>
             </View>
             <View
                 style={{
@@ -30,7 +30,7 @@ const MainNav = (props) => {
                     ...styles.navBarActionCenter
                 }}>
                 <AvatarButton
-                    onPress={() => console.log('Pressed')}>
+                    onPress={() => props.navigation.navigate('Home')}>
                     <Avatar.Image
                         size={40}
                         style={{backgroundColor: 'transparent'}}
@@ -48,7 +48,7 @@ const MainNav = (props) => {
                     }}
                     size={30}
                     text={'GC'}
-                    onPress={() => console.log('Pressed')} />
+                    onPress={() => props.navigation.navigate('Account')} />
                 <BadgeIconButton
                     icon="bell"
                     size={20}
@@ -57,7 +57,7 @@ const MainNav = (props) => {
                 <IconButton
                     icon="shield-account"
                     size={20}
-                    onPress={() => console.log('Pressed')}/>
+                    onPress={() => props.navigation.navigate('Admin')}/>
                 
             </View>
         </Appbar.Header>

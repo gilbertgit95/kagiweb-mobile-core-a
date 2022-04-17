@@ -1,6 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import MainNav from '../common/navs/mainNav'
 // auth Screens
 import HomeNav from './home'
 import DemoNav from './demo'
@@ -11,7 +12,11 @@ const MainContentDrawer = createDrawerNavigator();
 
 const MainContentNavigation = () => {
     return (
-        <MainContentDrawer.Navigator>
+        <MainContentDrawer.Navigator
+            screenOptions={{
+                header: (props) =>  <MainNav hasColor={true} { ...props } />
+            }}
+            >
             <MainContentDrawer.Screen
                 name="Home"
                 component={HomeNav} />
