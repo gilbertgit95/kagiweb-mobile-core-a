@@ -12,7 +12,8 @@ const AuthNavigation = () => {
     return (
         <AuthStack.Navigator
             screenOptions={{
-                headerShown: false
+                headerShown: false,
+                animation: 'none'
             }}>
             <AuthStack.Screen
                 name="Login"

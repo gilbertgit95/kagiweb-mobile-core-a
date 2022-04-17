@@ -8,10 +8,21 @@
 
 import React from 'react';
 import type {Node} from 'react';
+
+import AuthContext, { UseAuthContext } from './src/common/contexts/authContext';
 import Screens from './src/screens';
 
 const App: () => Node = () => {
-  return <Screens />
+  const authContextStates = UseAuthContext()
+
+  return (
+    <AuthContext.Provider
+      value={{
+        ...authContextStates
+      }}>
+      <Screens />
+    </AuthContext.Provider>
+  )
 };
 
 export default App;

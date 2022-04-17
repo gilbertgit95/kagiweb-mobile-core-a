@@ -2,16 +2,16 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-const AppSettings = ({ navigation }) => {
+const AppUsers = ({ navigation }) => {
 
     return (
         <View>
-            <Text>App Settings</Text>
+            <Text>App Users</Text>
         </View>
     )
 }
 
-export default AppSettings
+export default AppUsers
 
 const styles = StyleSheet.create({
     contentTextInputStyles: {

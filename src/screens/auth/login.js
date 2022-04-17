@@ -1,13 +1,25 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+
+import AuthContext from '../../common/contexts/authContext';
 import AuthLayout from './components/authLayout';
 
 const LoginScreen = ({ navigation }) => {
     const [states, setStates] = useState({
         email: '',
-        password: ''
+        password: '',
+        isSubmitLoading: false
     })
+    const authCtx = useContext(AuthContext)
+
+    const onSubmit = (e) => {
+        setStates({ ...states, ...{ isSubmitLoading: true }})
+        setTimeout(() => {
+            setStates({ ...states, ...{ isSubmitLoading: false }})
+            authCtx.setAuthContext({...authCtx, ...{ authKey: 'test_LoginAuthKey123' }})
+        }, 2000)
+    }
 
     return (
         <View>
@@ -43,7 +55,7 @@ const LoginScreen = ({ navigation }) => {
                 <Button
                     style={styles.buttonStyle}
                     mode='contained'
-                    onPress={ () => console.log('signing in') }>
+                    onPress={ onSubmit }>
                     Sign In
                 </Button>
             </AuthLayout>
