@@ -101,13 +101,6 @@ const MainNav = (props) => {
                             <Menu.Item onPress={onLogout} icon='logout' title='Logout' />
                         </Menu>
                     </View>
-                    {/* <AvatarButton
-                        style={{
-                            backgroundColor: theme.colors.text
-                        }}
-                        size={30}
-                        text={'GC'}
-                        onPress={() => props.navigation.navigate('Account')} /> */}
                     <BadgeIconButton
                         icon="bell"
                         size={20}
@@ -120,24 +113,6 @@ const MainNav = (props) => {
                     
                 </View>
             </Appbar.Header>
-
-            {/* other contents */}
-            {/* <View
-                style={{
-                    paddingTop: 50,
-                    flexDirection: 'row',
-                    justifyContent: 'center',
-                }}>
-                <Menu
-                    visible={states.rightMenuOpen}
-                    onDismiss={closeMenu}
-                    anchor={<Button onPress={openMenu}>Show menu</Button>}>
-                    <Menu.Item onPress={() => {}} title="Item 1" />
-                    <Menu.Item onPress={() => {}} title="Item 2" />
-                    <Divider />
-                    <Menu.Item onPress={() => {}} title="Item 3" />
-                </Menu>
-            </View> */}
         </>
     )
 }
