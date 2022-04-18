@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // auth Screens
 import AccCredential from './credential'
 import AccProfile from './profile'
+import AccSettings from './settings'
 
 const AdminStack = createNativeStackNavigator();
 
@@ -20,6 +21,9 @@ const AdminNavigation = () => {
             <AdminStack.Screen
                 name="AccountProfile"
                 component={AccProfile} />
+            <AdminStack.Screen
+                name="AccountSettings"
+                component={AccSettings} />
         </AdminStack.Navigator>
     )
 }

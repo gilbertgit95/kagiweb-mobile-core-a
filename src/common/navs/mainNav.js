@@ -76,9 +76,27 @@ const MainNav = (props) => {
                                     text={'GC'}
                                     onPress={openMenu} />
                             )}>
-                            <Menu.Item onPress={() => {}} icon='account-key' title='Credentials' />
-                            <Menu.Item onPress={() => {}} icon='account' title='Profile' />
-                            <Menu.Item onPress={() => {}} icon='account-cog' title='Settings' />
+                            <Menu.Item
+                                onPress={() => {
+                                    setStates({...states, ...{rightMenuOpen: false}})
+                                    props.navigation.navigate('Account', {screen: 'AccountCredential'})
+                                }}
+                                icon='account-key'
+                                title='Credentials' />
+                            <Menu.Item
+                                onPress={() => {
+                                    setStates({...states, ...{rightMenuOpen: false}})
+                                    props.navigation.navigate('Account', {screen: 'AccountProfile'})
+                                }}
+                                icon='account'
+                                title='Profile' />
+                            <Menu.Item
+                                onPress={() => {
+                                    setStates({...states, ...{rightMenuOpen: false}})
+                                    props.navigation.navigate('Account', {screen: 'AccountSettings'})
+                                }}
+                                icon='account-cog'
+                                title='Settings' />
                             <Divider />
                             <Menu.Item onPress={onLogout} icon='logout' title='Logout' />
                         </Menu>
@@ -94,7 +112,7 @@ const MainNav = (props) => {
                         icon="bell"
                         size={20}
                         badgeValue={3}
-                        onPress={() => console.log('Pressed')}/>
+                        onPress={() => props.navigation.navigate('Notifications')}/>
                     <IconButton
                         icon="shield-account"
                         size={20}

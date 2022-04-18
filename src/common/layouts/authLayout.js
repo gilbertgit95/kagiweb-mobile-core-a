@@ -1,10 +1,9 @@
 import React from 'react';
-import { Appbar } from 'react-native-paper';
 import { StyleSheet, View, Image } from 'react-native';
-import { Surface } from 'react-native-paper';
-// import MainNav from '../../common/navs/mainNav'
+import { Surface, Headline } from 'react-native-paper';
 
 const AuthLayout = (props) => {
+
     return (
         <>
             {/* app logo */}
@@ -12,6 +11,7 @@ const AuthLayout = (props) => {
                 <Image
                     style={styles.logoImage}
                     source={ require('../../../assets/kagiweb.png') } />
+                <Headline>kagiweb</Headline>
             </View>
             {
                 // the main contens
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         padding: 20,
         paddingTop: 30,
         paddingBottom: 30,
+        backgroundColor: 'transparent'
     },
     footerContent: {
         margin: 30,

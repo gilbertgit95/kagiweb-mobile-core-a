@@ -5,6 +5,7 @@ import MainNav from '../common/navs/mainNav'
 // auth Screens
 import HomeNav from './home'
 import DemoNav from './demo'
+import NotifsNav from './notifications'
 import AccountNav from './account'
 import AdminNav from './admin'
 
@@ -23,6 +24,12 @@ const MainContentNavigation = () => {
             <MainContentDrawer.Screen
                 name="Demo"
                 component={DemoNav} />
+            <MainContentDrawer.Screen
+                name="Notifications"
+                component={NotifsNav}
+                options={{
+                    drawerItemStyle: { display: 'none' }
+                }} />
             <MainContentDrawer.Screen
                 name="Account"
                 component={AccountNav}

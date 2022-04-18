@@ -28,7 +28,12 @@ const Screens = () => {
     const authCtx = useContext(AuthContext);
     const isDarkMode = useColorScheme() === 'dark';
     const ActiveTheme = isDarkMode? CombinedDarkTheme: CombinedDefaultTheme;
-    const theme = merge(ActiveTheme, PrimaryTheme);
+    let theme = merge(ActiveTheme, PrimaryTheme);
+
+    // custom style if in darkmode
+    if (isDarkMode) {
+        theme = merge(theme, {colors: {background: '#121212'}})
+    }
 
     if (authCtx.authContext.authKey) {
         console.log('is logged in')
