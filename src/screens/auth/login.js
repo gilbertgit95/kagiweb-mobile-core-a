@@ -53,6 +53,8 @@ const LoginScreen = ({ navigation }) => {
                         setStates({...states, ...{ password: value }})
                     }} />
                 <Button
+                    disabled={states.isSubmitLoading}
+                    loading={states.isSubmitLoading}
                     style={styles.buttonStyle}
                     mode='contained'
                     onPress={ onSubmit }>
