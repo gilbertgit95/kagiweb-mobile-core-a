@@ -14,7 +14,8 @@ import {
 } from 'react-native-paper';
 import merge from 'deepmerge';
 
-import AuthContext from '../common/contexts/authContext';
+// import AuthContext from '../common/contexts/authContext';
+import AsyncStorageContext from '../common/contexts/asyncStorageContext';
 import PrimaryTheme from '../common/themes/primary';
 import AuthNav from './authNav'
 import MainContentNav from './mainContentNav'
@@ -25,7 +26,8 @@ const CombinedDarkTheme = merge(PaperDarkTheme, NavigationDarkTheme);
 const RootStack = createNativeStackNavigator();
 
 const Screens = () => {
-    const authCtx = useContext(AuthContext);
+    // const authCtx = useContext(AuthContext);
+    const asyncStoreCtx = useContext(AsyncStorageContext);
     const isDarkMode = useColorScheme() === 'dark';
     const ActiveTheme = isDarkMode? CombinedDarkTheme: CombinedDefaultTheme;
     let theme = merge(ActiveTheme, PrimaryTheme);
@@ -35,7 +37,7 @@ const Screens = () => {
         theme = merge(theme, {colors: {background: '#121212'}})
     }
 
-    if (authCtx.authContext.authKey) {
+    if (asyncStoreCtx.asyncStorageContext.authKey) {
         console.log('is logged in')
     } else {
         console.log('is not logged in')
@@ -50,7 +52,7 @@ const Screens = () => {
                         animation: 'none'
                     }}>
                     {
-                        !authCtx.authContext.authKey? (
+                        !asyncStoreCtx.asyncStorageContext.authKey? (
                             <RootStack.Screen
                                 name='Auth'
                                 component={AuthNav} />

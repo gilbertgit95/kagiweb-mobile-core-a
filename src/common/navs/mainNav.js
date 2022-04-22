@@ -6,11 +6,13 @@ import { useTheme } from 'react-native-paper'
 import BadgeIconButton from '../buttons/badgeIconButtons';
 import AvatarButton from '../buttons/avatarButton';
 
-import AuthContext from '../contexts/authContext';
+// import AuthContext from '../contexts/authContext';
+import AsyncStorageContext from '../contexts/asyncStorageContext';
 
 const MainNav = (props) => {
     const theme = useTheme()
-    const authCtx = useContext(AuthContext)
+    // const authCtx = useContext(AuthContext)
+    const asyncStoreCtx = useContext(AsyncStorageContext);
     const [states, setStates] = useState({
         rightMenuOpen: false
     })
@@ -20,7 +22,7 @@ const MainNav = (props) => {
     const onLogout = (e) => {
         setStates({...states, ...{rightMenuOpen: false}})
         setTimeout(() => {
-            authCtx.setAuthContext({...authCtx, ...{ authKey: null }})
+            asyncStoreCtx.setAsyncStorageContext({...asyncStoreCtx.asyncStorageContext, ...{ authKey: null }})
         }, 500)
     }
 

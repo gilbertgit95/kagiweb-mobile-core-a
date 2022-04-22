@@ -9,19 +9,28 @@
 import React from 'react';
 import type {Node} from 'react';
 
-import AuthContext, { UseAuthContext } from './src/common/contexts/authContext';
+// import AuthContext, { UseAuthContext } from './src/common/contexts/authContext';
+import AsyncStorageContext, { UseAsyncStorageContext } from './src/common/contexts/asyncStorageContext';
+import AccountContext, { UseAccountContext } from './src/common/contexts/accountContext';
 import Screens from './src/screens';
 
 const App: () => Node = () => {
-  const authContextStates = UseAuthContext()
+  // const authContextStates = UseAuthContext()
+  const asyncStorageStates = UseAsyncStorageContext()
+  const accountStates = UseAccountContext()
 
   return (
-    <AuthContext.Provider
+    <AsyncStorageContext.Provider
       value={{
-        ...authContextStates
+        ...asyncStorageStates
       }}>
-      <Screens />
-    </AuthContext.Provider>
+      <AccountContext.Provider
+        value={{
+          ...accountStates
+        }}>
+        <Screens />
+      </AccountContext.Provider>
+    </AsyncStorageContext.Provider>
   )
 };
 

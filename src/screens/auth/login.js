@@ -2,7 +2,8 @@ import React, { useState, useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-import AuthContext from '../../common/contexts/authContext';
+// import AuthContext from '../../common/contexts/authContext';
+import AsyncStorageContext from '../../common/contexts/asyncStorageContext';
 import AuthLayout from '../../common/layouts/authLayout';
 
 const LoginScreen = ({ navigation }) => {
@@ -11,13 +12,14 @@ const LoginScreen = ({ navigation }) => {
         password: '',
         isSubmitLoading: false
     })
-    const authCtx = useContext(AuthContext)
+    // const authCtx = useContext(AuthContext)
+    const asyncStoreCtx = useContext(AsyncStorageContext);
 
     const onSubmit = (e) => {
         setStates({ ...states, ...{ isSubmitLoading: true }})
         setTimeout(() => {
             setStates({ ...states, ...{ isSubmitLoading: false }})
-            authCtx.setAuthContext({...authCtx, ...{ authKey: 'test_LoginAuthKey123' }})
+            asyncStoreCtx.setAsyncStorageContext({...asyncStoreCtx.asyncStorageContext, ...{ authKey: 'test_LoginAuthKey123' }})
         }, 2000)
     }
 
