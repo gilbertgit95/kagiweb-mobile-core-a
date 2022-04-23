@@ -8,22 +8,26 @@ import AvatarButton from '../buttons/avatarButton';
 
 // import AuthContext from '../contexts/authContext';
 import AsyncStorageContext from '../contexts/asyncStorageContext';
+import AccountContext from '../contexts/accountContext';
 
 const MainNav = (props) => {
     const theme = useTheme()
     // const authCtx = useContext(AuthContext)
     const asyncStoreCtx = useContext(AsyncStorageContext);
+    const AccCtx = useContext(AccountContext);
     const [states, setStates] = useState({
         rightMenuOpen: false
-    })
+    });
 
     const openMenu = () => setStates({...states, ...{rightMenuOpen: true}});
     const closeMenu = () => setStates({...states, ...{rightMenuOpen: false}});
-    const onLogout = (e) => {
+    const onLogout = async (e) => {
         setStates({...states, ...{rightMenuOpen: false}})
-        setTimeout(() => {
-            asyncStoreCtx.updateAsyncStorage({ authKey: null })
-        }, 500)
+        asyncStoreCtx.updateAsyncStorage({ authKey: null })
+        await AccCtx.signOut()
+        // setTimeout(() => {
+        //     asyncStoreCtx.updateAsyncStorage({ authKey: null })
+        // }, 500)
     }
 
     return (

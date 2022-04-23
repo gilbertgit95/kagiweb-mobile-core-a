@@ -12,7 +12,7 @@ const AsyncStorageContext = createContext({
 })
 export default AsyncStorageContext
 
-export const UseAsyncStorageContext = () => {
+export const useAsyncStorageContext = () => {
     const [asyncStorageContext, setAsyncStorageContext] = useState({})
 
     const updateAsyncStorage = async (obj) => {

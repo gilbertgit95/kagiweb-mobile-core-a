@@ -7,17 +7,18 @@
  */
 
 import React from 'react';
-import type {Node} from 'react';
+// import type {Node} from 'react';
 
-// import AuthContext, { UseAuthContext } from './src/common/contexts/authContext';
-import AsyncStorageContext, { UseAsyncStorageContext } from './src/common/contexts/asyncStorageContext';
-import AccountContext, { UseAccountContext } from './src/common/contexts/accountContext';
+// import AuthContext, { useAuthContext } from './src/common/contexts/authContext';
+import AsyncStorageContext, { useAsyncStorageContext } from './src/common/contexts/asyncStorageContext';
+import AccountContext, { useAccountContext } from './src/common/contexts/accountContext';
 import Screens from './src/screens';
 
-const App: () => Node = () => {
-  // const authContextStates = UseAuthContext()
-  const asyncStorageStates = UseAsyncStorageContext()
-  const accountStates = UseAccountContext()
+// const App: () => Node = () => {
+const App = () => {
+  // const authContextStates = useAuthContext()
+  const asyncStorageStates = useAsyncStorageContext()
+  const accountStates = useAccountContext()
 
   return (
     <AsyncStorageContext.Provider

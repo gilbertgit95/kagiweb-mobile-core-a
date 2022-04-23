@@ -3,10 +3,12 @@ import { StyleSheet, View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
 // import AuthContext from '../../common/contexts/authContext';
+import AccountContext from '../../common/contexts/accountContext';
 import AsyncStorageContext from '../../common/contexts/asyncStorageContext';
 import AuthLayout from '../../common/layouts/authLayout';
 
 const LoginScreen = ({ navigation }) => {
+    const AccCtx = useContext(AccountContext)
     const [states, setStates] = useState({
         email: '',
         password: '',
@@ -15,12 +17,20 @@ const LoginScreen = ({ navigation }) => {
     // const authCtx = useContext(AuthContext)
     const asyncStoreCtx = useContext(AsyncStorageContext);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         setStates({ ...states, ...{ isSubmitLoading: true }})
-        setTimeout(() => {
-            setStates({ ...states, ...{ isSubmitLoading: false }})
-            asyncStoreCtx.updateAsyncStorage({ authKey: 'test_LoginAuthKey123' })
-        }, 2000)
+        await AccCtx.signIn(
+            {
+                username: states.email,
+                password: states.password
+            },
+            (data, err) => {
+                if (!err) {
+                    setStates({ ...states, ...{ isSubmitLoading: false }})
+                    asyncStoreCtx.updateAsyncStorage(data)
+                }
+            }
+        )
     }
 
     return (
