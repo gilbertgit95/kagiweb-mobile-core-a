@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import MainLayout from '../../common/layouts/mainLayout';
 
 const AppEndpoints = ({ navigation }) => {
 
     return (
-        <View>
+        <MainLayout>
             <Text>App Endpoints</Text>
-        </View>
+        </MainLayout>
     )
 }
 

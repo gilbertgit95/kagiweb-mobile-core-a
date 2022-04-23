@@ -19,7 +19,7 @@ const LoginScreen = ({ navigation }) => {
         setStates({ ...states, ...{ isSubmitLoading: true }})
         setTimeout(() => {
             setStates({ ...states, ...{ isSubmitLoading: false }})
-            asyncStoreCtx.setAsyncStorageContext({...asyncStoreCtx.asyncStorageContext, ...{ authKey: 'test_LoginAuthKey123' }})
+            asyncStoreCtx.updateAsyncStorage({ authKey: 'test_LoginAuthKey123' })
         }, 2000)
     }
 

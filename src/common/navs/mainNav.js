@@ -22,7 +22,7 @@ const MainNav = (props) => {
     const onLogout = (e) => {
         setStates({...states, ...{rightMenuOpen: false}})
         setTimeout(() => {
-            asyncStoreCtx.setAsyncStorageContext({...asyncStoreCtx.asyncStorageContext, ...{ authKey: null }})
+            asyncStoreCtx.updateAsyncStorage({ authKey: null })
         }, 500)
     }
 

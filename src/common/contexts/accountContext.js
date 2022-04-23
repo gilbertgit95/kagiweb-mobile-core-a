@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext } from 'react'
 import config from '../../config'
 import utils from '../utilities'
+import AsyncStore from '../utilities/ayncStorage'
 
 const AccountContext = createContext({
     accountContext: {},
@@ -11,7 +12,7 @@ const AccountContext = createContext({
 export default AccountContext
 
 export const UseAccountContext = () => {
-    const storageName = config.localStorageName
+    const storageName = config.storageName
 
     const [accountContext, setAccountContext] = useState({})
 
@@ -32,10 +33,20 @@ export const UseAccountContext = () => {
     }
 
     useEffect(() => {
-
       // if a token exist, then fetch user value using the token
       let init = async () => {
-        
+        let store = await AsyncStore.getItem(config.storageName)
+
+        if (store && store.authKey) {
+          console.log('account data is being fetched by authkey')
+          setAccountContext({
+            ...accountContext,
+            ...{"__isLoading": true}
+          })
+          await utils.waitFor(2)
+          setAccountContext(testAccountData)
+          console.log('account data has loaded')
+        }
       }
 
       init()

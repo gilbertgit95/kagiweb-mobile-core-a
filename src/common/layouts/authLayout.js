@@ -1,35 +1,37 @@
 import React from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, SafeAreaView, ScrollView } from 'react-native';
 import { Surface, Headline } from 'react-native-paper';
 
 const AuthLayout = (props) => {
 
     return (
-        <>
-            {/* app logo */}
-            <View style={styles.logo}>
-                <Image
-                    style={styles.logoImage}
-                    source={ require('../../../assets/kagiweb.png') } />
-                <Headline>kagiweb</Headline>
-            </View>
-            {
-                // the main contens
-                props.children? (
-                    <Surface style={styles.mainContent}>
-                        { props.children }
-                    </Surface>
-                ): null
-            }
-            {
-                // the bottom contents
-                props.footerContent? (
-                    <View style={styles.footerContent}>
-                        { props.footerContent }
-                    </View>
-                ): null
-            }
-        </>
+        <SafeAreaView>
+            <ScrollView>
+                {/* app logo */}
+                <View style={styles.logo}>
+                    <Image
+                        style={styles.logoImage}
+                        source={ require('../../../assets/kagiweb.png') } />
+                    <Headline>kagiweb</Headline>
+                </View>
+                {
+                    // the main contens
+                    props.children? (
+                        <Surface style={styles.mainContent}>
+                            { props.children }
+                        </Surface>
+                    ): null
+                }
+                {
+                    // the bottom contents
+                    props.footerContent? (
+                        <View style={styles.footerContent}>
+                            { props.footerContent }
+                        </View>
+                    ): null
+                }
+            </ScrollView>
+        </SafeAreaView>
     )
 }
 

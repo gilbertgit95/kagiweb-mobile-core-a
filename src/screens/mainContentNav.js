@@ -1,5 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { useTheme } from 'react-native-paper'
 
 import MainNav from '../common/navs/mainNav'
 // auth Screens
@@ -12,12 +13,25 @@ import AdminNav from './admin'
 const MainContentDrawer = createDrawerNavigator();
 
 const MainContentNavigation = () => {
+    const theme = useTheme()
+
     return (
         <MainContentDrawer.Navigator
             screenOptions={{
-                header: (props) =>  <MainNav hasColor={true} { ...props } />
-            }}
-            >
+                header: (props) =>  <MainNav hasColor={true} { ...props } />,
+                drawerStyle: {
+                    // backgroundColor: theme.colors.primary,
+                },
+                drawerItemStyle: {
+                    alignContent: 'flex-end',
+                    // backgroundColor: 'red',
+                },
+                // drawerActiveTintColor: '#fff',
+                drawerActiveBackgroundColor: 'transparent',
+
+                // drawerInactiveTintColor: theme.colors.text,
+                drawerInactiveBackgroundColor: 'transparent'
+            }}>
             <MainContentDrawer.Screen
                 name="Home"
                 component={HomeNav} />

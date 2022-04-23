@@ -1,7 +1,7 @@
 let config = {
     appName: 'kagiweb',
     environment: 'development',
-    localStorageName: 'app_info',
+    storageName: 'app_info',
     // environment: 'staging'
     // environment: 'production'
     development: {
