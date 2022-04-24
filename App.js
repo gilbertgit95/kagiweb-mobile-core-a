@@ -6,8 +6,9 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 // import type {Node} from 'react';
+import SplashScreen from  "react-native-splash-screen";
 
 // import AuthContext, { useAuthContext } from './src/common/contexts/authContext';
 import AsyncStorageContext, { useAsyncStorageContext } from './src/common/contexts/asyncStorageContext';
@@ -19,6 +20,10 @@ const App = () => {
   // const authContextStates = useAuthContext()
   const asyncStorageStates = useAsyncStorageContext()
   const accountStates = useAccountContext()
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, [])
 
   return (
     <AsyncStorageContext.Provider
