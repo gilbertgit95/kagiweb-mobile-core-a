@@ -31,6 +31,8 @@ To succesfully run the application. please follow the steps below.
 - inprogress...
 
 ### Build
+- for android, just type `npm run build:android` in cmd
+- goto the folder `android/app/build/outputs/apk/` to find the build apk
 - inprogress...
 
 
