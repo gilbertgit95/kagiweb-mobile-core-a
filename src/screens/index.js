@@ -16,6 +16,7 @@ import merge from 'deepmerge';
 
 import InitialLoadingView from '../common/views/initialLoadingView';
 import AccountContext from '../common/contexts/accountContext';
+import AsyncStorageContext from '../common/contexts/asyncStorageContext';
 import PrimaryTheme from '../common/themes/primary';
 import DarkSpecific from '../common/themes/darkSpecific';
 import LightSpecific from '../common/themes/lightSpecific';
@@ -30,6 +31,7 @@ const RootStack = createNativeStackNavigator();
 
 const Screens = () => {
     const AccCtx = useContext(AccountContext);
+    const AsyncStoreCtx = useContext(AsyncStorageContext);
 
     const isDarkMode = useColorScheme() === 'dark';
     const ActiveTheme = isDarkMode? CombinedDarkTheme: CombinedDefaultTheme;
@@ -43,7 +45,8 @@ const Screens = () => {
     }
 
     // check for the initial user data loading
-    let isInitialLoading = AccCtx.accountContext.__action === 'initialize'
+    let isInitialLoading = (   typeof AsyncStoreCtx.asyncStorageContext.authKey === 'string'
+                            && AccCtx.accountContext.__action === 'initialize')
 
     return (
         <PaperProvider theme={theme}>
